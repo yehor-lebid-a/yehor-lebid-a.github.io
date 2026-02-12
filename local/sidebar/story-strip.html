@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Strip - Sidebar Layout</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #fff8e1; color: #f57f17; }
+        header { background: #f57f17; color: #fff; padding: 20px; text-align: center; }
+        header nav { margin-bottom: 12px; }
+        header a { color: #fff9c4; text-decoration: none; }
+        header .meta { font-size: 13px; margin-top: 8px; color: #fff9c4; }
+        .layout { display: flex; gap: 24px; padding: 24px; }
+        .sidebar { width: 400px; flex-shrink: 0; }
+        .sidebar h3 { margin-bottom: 12px; }
+        .main { flex: 1; }
+        .main h2 { margin-bottom: 16px; }
+        .main p { margin-bottom: 20px; line-height: 1.6; color: #f9a825; }
+        .article-block { background: #fff59d; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav><a href="../../index.html">← Home</a></nav>
+        <h1>Sidebar Layout - Story Strip</h1>
+        <p class="meta"><strong>Env:</strong> Local | <strong>Type:</strong> Story Strip | <strong>Channel Token:</strong> 692d5db0e92fa0c6b046902d</p>
+    </header>
+    <div class="layout">
+        <aside class="sidebar">
+            <h3>Sidebar Widget</h3>
+            <div class="apester-strip" is-mobile-only="false" data-channel-tokens="692d5db0e92fa0c6b046902d" item-shape="roundSquare" item-size="small" strip-background="transparent" thumbnails-stroke-color="rgb(264, 46, 61)"  header-font-family="Lato"  header-provider="system"  header-font-size="18"  header-font-color="rgba(0,0,0,1)"  header-font-weight="400"  header-ltr="true"  top-border-width="0"  top-border-color="rgba(0, 0, 0, 1)"  bottom-border-width="0"  bottom-border-color="rgba(0, 0, 0, 1)"  data-fast-strip="true"></div><script type="module" src="https://web-sdk.apester.local.com/web-sdk.core.min.js"></script><script nomodule src="https://web-sdk.apester.local.com/web-sdk.core.legacy.min.js" async></script>
+        </aside>
+        <main class="main">
+            <h2>Main Content Area</h2>
+            <div class="article-block">
+                <h3>Article Section 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod velit nec arcu tincidunt, a fermentum magna dictum. Nullam sed justo at urna facilisis pharetra.</p>
+            </div>
+            <div class="article-block">
+                <h3>Article Section 2</h3>
+                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed consequat libero eget odio elementum, non efficitur nisi tincidunt.</p>
+            </div>
+            <div class="article-block">
+                <h3>Article Section 3</h3>
+                <p>Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
