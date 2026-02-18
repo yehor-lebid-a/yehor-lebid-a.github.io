@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Strip - Bottom Layout</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f1f8e9; color: #33691e; }
+        header { background: #33691e; color: #fff; padding: 20px; text-align: center; }
+        header nav { margin-bottom: 12px; }
+        header a { color: #aed581; text-decoration: none; }
+        header .meta { font-size: 13px; margin-top: 8px; color: #aed581; }
+        .content { max-width: 1000px; margin: 0 auto; padding: 24px; }
+        .content h2 { margin-bottom: 16px; }
+        .content p { margin-bottom: 20px; line-height: 1.6; color: #558b2f; }
+        .spacer { background: #dcedc8; padding: 40px; border-radius: 8px; margin-bottom: 30px; }
+        .spacer h3 { margin-bottom: 12px; }
+        .apester-wrapper { max-width: 800px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .apester-wrapper h3 { margin-bottom: 12px; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav><a href="../../index.html">← Home</a></nav>
+        <h1>Bottom Layout - Story Strip</h1>
+        <p class="meta"><strong>Env:</strong> Prod | <strong>Type:</strong> Story Strip | <strong>Channel Token:</strong> 696112218ab2fbf1b3d52edf</p>
+    </header>
+    <div class="content">
+        <h2>Scroll down to see the Apester Story Strip widget</h2>
+
+        <div class="spacer">
+            <h3>Section 1: Introduction</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+        </div>
+
+        <div class="spacer">
+            <h3>Section 2: Details</h3>
+            <p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.</p>
+            <p>Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula ut dictum pharetra.</p>
+        </div>
+
+        <div class="spacer">
+            <h3>Section 3: Background</h3>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+            <p>Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.</p>
+        </div>
+
+        <div class="spacer">
+            <h3>Section 4: Analysis</h3>
+            <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        </div>
+
+        <div class="apester-wrapper">
+            <h3>Apester Story Strip Widget</h3>
+            <div class="apester-strip" is-mobile-only="false" data-channel-tokens="696112218ab2fbf1b3d52edf" item-shape="roundSquare" item-size="medium" strip-background="transparent" thumbnails-stroke-color="rgb(264, 46, 61)"  header-font-family="Lato"  header-provider="system"  header-font-size="18"  header-font-color="rgba(0,0,0,1)"  header-font-weight="400"  header-ltr="true"  top-border-width="0"  top-border-color="#000000ff"  bottom-border-width="0"  bottom-border-color="#000000ff"  data-fast-strip="true"></div><script type="module" src="https://sdk.apester.com/web-sdk.core.min.js"></script><script nomodule src="https://sdk.apester.com/web-sdk.core.legacy.min.js" async></script>
+        </div>
+
+        <div class="spacer">
+            <h3>Section 5: Conclusion</h3>
+            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ut facilisis in, egestas eget quam.</p>
+        </div>
+    </div>
+</body>
+</html>
