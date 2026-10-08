@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EX.CO Player Test</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; margin: 16px; color: #222; background: #fff; }
+    nav a { margin-right: 12px; }
+    .slot { width: 640px; max-width: 100%; aspect-ratio: 16 / 9; border: 1px solid #ccc; }
+    #log { background: #f5f5f5; padding: 8px; font-size: 12px; white-space: pre-wrap; max-height: 50vh; overflow: auto; }
+    .ok { color: #0a7d2c; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>EX.CO player test</h2>
+  <nav>
+    <a href="?mode=embed">Plain embed</a>
+    <a href="?mode=vast">Programmatic + sample VAST</a>
+  </nav>
+  <p>Mode: <b id="mode"></b> · Player: <code id="pid"></code> · Impression: <span id="imp">no</span></p>
+
+  <div class="slot" id="slot"></div>
+  <h4>Events</h4>
+  <div id="log"></div>
+
+  <script>
+    var PID = 'ab5e9157-9db2-40bb-a16e-12021f9c8f55';
+    var MODE = new URLSearchParams(location.search).get('mode') === 'vast' ? 'vast' : 'embed';
+    // Google public sample tag, always fills
+    var VAST = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=' + Date.now();
+    var EVENTS = ['player-ready', 'slot-start', 'slot-auction-completed', 'ad-init', 'ad-started', 'ad-impression', 'ad-completed', 'ad-skipped', 'ad-error', 'slot-end'];
+    var t0 = Date.now();
+
+    document.getElementById('mode').textContent = MODE;
+    document.getElementById('pid').textContent = PID;
+
+    function log(m) {
+      var line = '+' + ((Date.now() - t0) / 1000).toFixed(1) + 's ' + m;
+      console.log('[exco-test]', line);
+      document.getElementById('log').textContent += line + '\n';
+      if (m.indexOf('ad-impression') !== -1) document.getElementById('imp').innerHTML = '<span class="ok">YES</span>';
+    }
+
+    // Player container must have the player id as its element id
+    var holder = document.createElement('div');
+    holder.id = PID;
+    document.getElementById('slot').appendChild(holder);
+
+    window.addEventListener('message', function (e) {
+      var d = e.data;
+      try { if (typeof d === 'string') d = JSON.parse(d); } catch (_) {}
+      if (d && d.type === 'exco-event') log('msg ' + d.name + ' ' + JSON.stringify(d.metadata || {}).slice(0, 200));
+    });
+
+    var wait = setInterval(function () {
+      if (!window.ExCoPlayer) return;
+      clearInterval(wait);
+      try {
+        var p = ExCoPlayer.connect(PID);
+        EVENTS.forEach(function (n) {
+          p.on(n, function (x) { log('on ' + n + ' ' + JSON.stringify(x || {}).slice(0, 250)); });
+        });
+        if (MODE === 'vast') {
+          Promise.resolve(p.init({ vast: VAST, mute: true, autoPlay: true, showAds: true }))
+            .then(function () { log('init ok (vast)'); }, function (e) { log('init error ' + e); });
+        }
+      } catch (err) { log('connect error ' + err); }
+    }, 100);
+
+    (function (d, s, n) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      js = d.createElement(s); js.className = n;
+      if (MODE === 'vast') js.setAttribute('programmatic', 'true');
+      js.src = '//player.ex.co/player/' + PID;
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'exco-player'));
+  </script>
+</body>
+</html>
